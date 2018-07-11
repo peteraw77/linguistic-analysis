@@ -11,12 +11,18 @@ class SentenceAnalyzer:
         Processes the sentence and locates the subject, object, and verb
         '''
 
+        #TODO make into arrays
         subj = None
         obj = None
         verb = None
 
         nlp = spacy.load('en_core_web_sm')
         out = nlp(sentence)
+
+        # check to make sure we have only one clause
+        if len(out.sents) > 1:
+            raise Exception('''Sentence has multiple clauses;
+                compound sentences must be split before processing''')
 
         for word in out:
             if word.dep == symbols.nsubj:
@@ -50,3 +56,12 @@ class SentenceAnalyzer:
         entities = [(ent.text, ent.label_) for ent in out.ents]
 
         return entities
+
+    def split_compound_sentence(self, sentence):
+        '''
+        Separate a compound sentence into its clauses
+        '''
+        nlp = spacy.load('en_core_web_sm')
+        out = nlp(sentence)
+
+        return doc.sents
