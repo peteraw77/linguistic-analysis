@@ -1,8 +1,0 @@
-setup.py
-linguistic_analysis/sentence_analyzer.py
-linguistic_analysis.egg-info/PKG-INFO
-linguistic_analysis.egg-info/SOURCES.txt
-linguistic_analysis.egg-info/dependency_links.txt
-linguistic_analysis.egg-info/requires.txt
-linguistic_analysis.egg-info/top_level.txt
-linguistic_analysis.egg-info/zip-safe
