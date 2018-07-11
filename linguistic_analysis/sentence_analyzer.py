@@ -6,8 +6,10 @@ class SentenceAnalyzer:
     Class for analyzing sentence structure and extracting key information
     '''
     
-    def __init__()
+    def __init__(self):
         self.nlp = spacy.load('en_core_web_sm')
+    
+    #TODO method for checking the form of a sentence
 
     def subject_object_analysis(self, sentence):
         '''
@@ -22,7 +24,8 @@ class SentenceAnalyzer:
         out = self.nlp(sentence)
 
         # check to make sure we have only one clause
-        if len(out.sents) > 1:
+        num_sentences = sum(1 for _ in out.sents)
+        if num_sentences > 1:
             raise Exception('''Sentence has multiple clauses;
                 compound sentences must be split before processing''')
 
