@@ -5,6 +5,9 @@ class SentenceAnalyzer:
     '''
     Class for analyzing sentence structure and extracting key information
     '''
+    
+    def __init__()
+        self.nlp = spacy.load('en_core_web_sm')
 
     def subject_object_analysis(self, sentence):
         '''
@@ -16,8 +19,7 @@ class SentenceAnalyzer:
         obj = None
         verb = None
 
-        nlp = spacy.load('en_core_web_sm')
-        out = nlp(sentence)
+        out = self.nlp(sentence)
 
         # check to make sure we have only one clause
         if len(out.sents) > 1:
@@ -51,8 +53,7 @@ class SentenceAnalyzer:
         Searches the sentence for proper nouns
         '''
 
-        nlp = spacy.load('en_core_web_sm')
-        out = nlp(sentence)
+        out = self.nlp(sentence)
         entities = [(ent.text, ent.label_) for ent in out.ents]
 
         return entities
@@ -61,7 +62,6 @@ class SentenceAnalyzer:
         '''
         Separate a compound sentence into its clauses
         '''
-        nlp = spacy.load('en_core_web_sm')
-        out = nlp(sentence)
+        out = self.nlp(sentence)
 
         return doc.sents
