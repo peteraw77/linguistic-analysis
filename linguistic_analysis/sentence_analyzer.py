@@ -24,8 +24,7 @@ class SentenceAnalyzer:
         out = self.nlp(sentence)
 
         # check to make sure we have only one clause
-        num_sentences = sum(1 for _ in out.sents)
-        if num_sentences > 1:
+        if is_compound_sentence(sentence):
             raise Exception('''Sentence has multiple clauses;
                 compound sentences must be split before processing''')
 
@@ -60,6 +59,17 @@ class SentenceAnalyzer:
         entities = [(ent.text, ent.label_) for ent in out.ents]
 
         return entities
+
+    def is_compound_sentence(self, sentence):
+        '''
+        Determine if sentence is compound or not
+        '''
+        out = self.nlp(sentence)
+
+        # generators have no inherent method to find length
+        num_sentences = sum(1 for sent in out.sents)
+        
+        return num_sentences > 1
 
     def split_compound_sentence(self, sentence):
         '''
