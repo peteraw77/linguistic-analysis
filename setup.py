@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='linguistic_analysis',
-      version='1.0-alpha',
+      version='1.0-alpha1',
       description='Tools for extracting meaning from text',
       author='Peter Wright',
       license='MIT',

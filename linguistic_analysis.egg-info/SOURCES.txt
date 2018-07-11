@@ -1,5 +1,5 @@
 setup.py
-linguistic_analysis/question_analyzer.py
+linguistic_analysis/sentence_analyzer.py
 linguistic_analysis.egg-info/PKG-INFO
 linguistic_analysis.egg-info/SOURCES.txt
 linguistic_analysis.egg-info/dependency_links.txt
