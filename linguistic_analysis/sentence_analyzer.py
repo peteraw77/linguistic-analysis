@@ -58,6 +58,23 @@ class SentenceAnalyzer:
 
         return entities
 
+    def is_imperative_sentence(self, sentence):
+        '''
+        Check if a given sentence is imperative
+        '''
+        out = self.nlp(sentence)
+
+        # check if there is a subject
+        for word in out:
+            if word.dep == symbols.nsubj:
+                return False
+
+        # check if the sentence begins with a verb
+        if out[0].pos_ != symbols.verb
+            return False
+
+        return True
+
     def is_compound_sentence(self, sentence):
         '''
         Determine if sentence is compound or not
