@@ -5,7 +5,7 @@ class SentenceAnalyzer:
     '''
     Class for analyzing sentence structure and extracting key information
     '''
-    
+
     def __init__(self):
         self.nlp = spacy.load('en_core_web_sm')
     
@@ -15,7 +15,6 @@ class SentenceAnalyzer:
         '''
         Processes the sentence and locates the subject, object, and verb
         '''
-
         #TODO use chunking or make into arrays
         subjects = None
         objects = None
@@ -54,7 +53,6 @@ class SentenceAnalyzer:
         '''
         Searches the sentence for proper nouns
         '''
-
         out = self.nlp(sentence)
         entities = [(ent.text, ent.label_) for ent in out.ents]
 
