@@ -64,14 +64,14 @@ class SentenceAnalyzer:
         '''
         out = self.nlp(sentence)
 
+        # check if the sentence begins with a verb
+        if out[0].pos_ != symbols.verb
+            return False
+
         # check if there is a subject
         for word in out:
             if word.dep == symbols.nsubj:
                 return False
-
-        # check if the sentence begins with a verb
-        if out[0].pos_ != symbols.verb
-            return False
 
         return True
 
