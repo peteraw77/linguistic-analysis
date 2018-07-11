@@ -16,10 +16,10 @@ class SentenceAnalyzer:
         Processes the sentence and locates the subject, object, and verb
         '''
 
-        #TODO make into arrays
-        subj = None
-        obj = None
-        verb = None
+        #TODO use chunking or make into arrays
+        subjects = None
+        objects = None
+        verbs = None
 
         out = self.nlp(sentence)
 
@@ -67,4 +67,4 @@ class SentenceAnalyzer:
         '''
         out = self.nlp(sentence)
 
-        return doc.sents
+        return [str(sent) for sent in out.sents]
