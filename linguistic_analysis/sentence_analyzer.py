@@ -23,7 +23,7 @@ class SentenceAnalyzer:
         out = self.nlp(sentence)
 
         # check to make sure we have only one clause
-        if is_compound_sentence(sentence):
+        if is_compound(sentence):
             raise Exception('''Sentence has multiple clauses;
                 compound sentences must be split before processing''')
 
@@ -58,7 +58,7 @@ class SentenceAnalyzer:
 
         return entities
 
-    def is_imperative_sentence(self, sentence):
+    def is_imperative(self, sentence):
         '''
         Check if a given sentence is imperative
         '''
@@ -75,7 +75,7 @@ class SentenceAnalyzer:
 
         return True
 
-    def is_compound_sentence(self, sentence):
+    def is_compound(self, sentence):
         '''
         Determine if sentence is compound or not
         '''
