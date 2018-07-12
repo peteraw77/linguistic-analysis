@@ -10,22 +10,23 @@ class SentenceAnalyzer:
         self.nlp = spacy.load('en_core_web_sm')
     
     #TODO method for checking the form of a sentence
+    #TODO return all strings in lower case
 
-    def subject_object_analysis(self, sentence):
+    def subject_object_analysis(self, clause):
         '''
-        Processes the sentence and locates the subject, object, and verb
+        Processes a clause and locates the subject, object, and verb
         '''
-        #TODO use chunking or make into arrays
-        subjects = None
-        objects = None
-        verbs = None
-
-        out = self.nlp(sentence)
-
         # check to make sure we have only one clause
-        if is_compound(sentence):
+        if self.is_compound(clause):
             raise Exception('''Sentence has multiple clauses;
                 compound sentences must be split before processing''')
+
+        #TODO use chunking or make into arrays
+        subj = None
+        obj = None
+        verb = None
+
+        out = self.nlp(clause)
 
         for word in out:
             if word.dep == symbols.nsubj:
@@ -64,8 +65,8 @@ class SentenceAnalyzer:
         '''
         out = self.nlp(sentence)
 
-        # check if the sentence begins with a verb
-        if out[0].pos_ != symbols.verb
+        # check if the sentence begins with a present tense verb
+        if out[0].tag_ != 'VB':
             return False
 
         # check if there is a subject
@@ -90,6 +91,7 @@ class SentenceAnalyzer:
         '''
         Separate a compound sentence into its clauses
         '''
+        #TODO: make this work
         out = self.nlp(sentence)
 
         return [str(sent) for sent in out.sents]
